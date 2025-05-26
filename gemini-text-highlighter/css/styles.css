@@ -1,0 +1,74 @@
+/* styles.css for Gemini Text Highlighter */
+
+/* Style for the highlighted text spans */
+.gemini-highlighter-highlighted-text {
+    background-color: lightblue; /* Default highlight color */
+    cursor: pointer;          /* Indicates it's interactive */
+    /* Add any other styling like rounded corners or slight padding if desired */
+    /* padding: 1px 2px; */
+    /* border-radius: 3px; */
+}
+
+/* Style for the popup div that shows API response */
+#gemini-highlighter-popup {
+    position: absolute;
+    display: none; /* Initially hidden, shown by JavaScript */
+    
+    /* Appearance */
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    
+    /* Sizing */
+    max-width: 350px;
+    max-height: 250px; /* Max height before scrolling */
+    overflow-y: auto;  /* Scroll if content is too long */
+    
+    /* Text and Font */
+    font-family: Arial, sans-serif;
+    font-size: 13px;   /* Slightly smaller than default page text */
+    line-height: 1.4;
+    color: #333333;
+    
+    /* Positioning - z-index is critical */
+    z-index: 2147483647; /* Max z-index to try and be on top of everything */
+    
+    /* For potential future enhancements */
+    /* transition: opacity 0.1s ease-in-out; */
+}
+
+/* Optional: Style for links within the popup if any */
+#gemini-highlighter-popup a {
+    color: #007bff;
+    text-decoration: none;
+}
+#gemini-highlighter-popup a:hover {
+    text-decoration: underline;
+}
+
+/* Optional: Styling for preformatted text or code blocks if Gemini API returns markdown */
+#gemini-highlighter-popup pre {
+    background-color: #f4f4f4;
+    padding: 8px;
+    border-radius: 3px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Wrap long lines */
+    word-wrap: break-word; /* Break words if necessary */
+}
+
+#gemini-highlighter-popup code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: #f0f0f0; /* Slightly different for inline code */
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+#gemini-highlighter-popup p {
+    margin-top: 0;
+    margin-bottom: 8px; /* Spacing between paragraphs */
+}
+#gemini-highlighter-popup p:last-child {
+    margin-bottom: 0;
+}

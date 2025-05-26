@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Text Highlighter",
+  "version": "0.1.0",
+  "description": "Select text, get Gemini insight, and highlight.",
+  "permissions": [
+    "storage",    // For saving API key, model, prompts
+    "scripting"   // For injecting content scripts (though often declared via content_scripts key too)
+    // "activeTab" // Consider if specific host permissions are too broad initially.
+                  // However, for on-page highlighting without user clicking the extension icon first,
+                  // content_scripts with broad match patterns are needed.
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], // Runs on all pages
+      "js": ["content/content.js"],
+      "css": ["css/styles.css"], // Optional: if styles are complex enough for a separate file
+      "run_at": "document_idle" // Run after page is mostly loaded
+    }
+  ],
+  "action": {
+    // "default_popup": "popup/popup.html", // Not the primary interaction, maybe for status or quick options
+    "default_title": "Gemini Text Highlighter",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
